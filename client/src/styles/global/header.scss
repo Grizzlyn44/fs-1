@@ -1,0 +1,26 @@
+.main-navigation {
+  //   background: red;
+  padding: 0 4rem;
+  height: 4rem;
+  position: relative;
+  //   display: flex;
+  //   align-items: center;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+  }
+  .main-navigation__logo {
+    font-size: 1.75rem;
+  }
+  .main-navigation__links {
+    display: flex;
+  }
+  .main-navigation__link {
+    cursor: pointer;
+    color: $text-color-primary;
+    padding: 0 1rem;
+    text-decoration: none;
+  }
+}

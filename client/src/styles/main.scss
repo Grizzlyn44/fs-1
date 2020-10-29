@@ -1,0 +1,17 @@
+//files
+@import "./vendors/reset.scss";
+@import "./global/colors.scss";
+@import "./global/fonts.scss";
+
+//vendors
+@import ".././../node_modules/antd/dist/antd.css";
+body {
+  background: $primary-color;
+  color: $text-color-primary;
+}
+
+* {
+  font-family: $font-family-primary;
+}
+
+@import "./global/header.scss";
