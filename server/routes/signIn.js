@@ -53,13 +53,19 @@ router.post("/signin", async (req, res, next) => {
         },
         ENV_JWT_TOKEN,
         {
-          expiresIn: "4m"
+          expiresIn: "2m"
         }
       );
 
+      res.cookie("access_token", token, {
+        maxAge: 1600,
+        httpOnly: true,
+        // secure: true // jen v produkci
+      })
+
       return res.status(200).send({
         message: "Signed in successfully",
-        token
+        // token
       });
     }
 

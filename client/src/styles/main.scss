@@ -3,6 +3,9 @@
 @import "./global/colors.scss";
 @import "./global/fonts.scss";
 
+//variables
+$header-main-height: 6rem;
+
 //vendors
 @import ".././../node_modules/antd/dist/antd.css";
 body {
@@ -15,3 +18,8 @@ body {
 }
 
 @import "./global/header.scss";
+
+//layout
+.main {
+  padding-top: $header-main-height;
+}

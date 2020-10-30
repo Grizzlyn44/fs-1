@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import CookieParser from "cookie-parser";
+import jwt from "jsonwebtoken";
 
 import Cards from "./models/dbCards.js";
 
@@ -10,9 +12,11 @@ import signUpRoute from "./routes/signUp.js";
 
 import checkAuth from "./middleware/authCheck.js";
 
+const ENV_JWT_TOKEN = "fyOMG332oPsTxi"; // make it global
+
 // app config
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 8001;
 
 const db_user = "grizzlyn44";
 const db_password = "Sujmw5wCJiw3qNmB";
@@ -22,7 +26,11 @@ const connection_url = `mongodb+srv://${db_user}:${db_password}@cluster0.sypta.m
 
 // middlewares
 app.use(express.json());
-app.use(cors());
+app.use(CookieParser());
+app.use(cors({
+  origin: "https://localhost:3001",
+  credentials: true
+}));
 
 // db congif
 mongoose.connect(
@@ -50,7 +58,12 @@ app.use(signUpRoute);
 //   res.status(200).send("Hello world");
 // });
 
-app.get("/cards", checkAuth, (req, res, next) => {
+app.get("/cards", (req, res, next) => { //checkAuth
+  const token = req.cookies.access_token
+  console.log("token", token)
+  const decoded = jwt.verify(token, ENV_JWT_TOKEN)
+  console.log("decoded", decoded)
+
   Cards.find((err, data) => {
     if (err) {
       res.status(500).send(err);

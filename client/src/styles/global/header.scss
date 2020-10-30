@@ -1,10 +1,12 @@
 .main-navigation {
-  //   background: red;
   padding: 0 4rem;
-  height: 4rem;
+  height: $header-main-height;
   position: relative;
-  //   display: flex;
-  //   align-items: center;
+  background: rgba(0,0,0,.3);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
   nav {
     display: flex;
     justify-content: space-between;
